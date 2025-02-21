@@ -20,6 +20,10 @@ const userSchema = Schema({
         required: [true, "Email is required"],
         unique: true
     },
+    password:{
+        type: String,
+        required: [true, "Password is required"]
+    },
     rol: {
         type: String,
         required: true,

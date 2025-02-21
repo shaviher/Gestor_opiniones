@@ -6,6 +6,7 @@ import helmet from "helmet"
 import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
 import userRoutes from "../src/user/user.routes.js"
+import authRoutes from "../src/auth/auth.routes.js"
 
 
 const middlewares = (app) => {
@@ -17,6 +18,8 @@ const middlewares = (app) => {
 
 const routes = async (app) => {
     app.use("/gestionOpiniones/v1/user", userRoutes)
+    app.use("/gestionOpiniones/v1/auth", authRoutes)
+
 }
 
 const conectarDB = async () =>{
