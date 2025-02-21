@@ -5,6 +5,7 @@ import cors from "cors"
 import helmet from "helmet"
 import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
+import userRoutes from "../src/user/user.routes.js"
 
 
 const middlewares = (app) => {
@@ -12,6 +13,10 @@ const middlewares = (app) => {
     app.use(cors())
     app.use(helmet())
     app.use(morgan("dev"))
+}
+
+const routes = async (app) => {
+    app.use("/gestionOpiniones/v1/user", userRoutes)
 }
 
 const conectarDB = async () =>{
@@ -26,8 +31,9 @@ const conectarDB = async () =>{
 export const initServer = () => {
     const app = express()
     try{
-        conectarDB()
         middlewares(app)
+        conectarDB()
+        routes(app)
         app.listen(process.env.PORT)
         console.log(`Server running on port ${process.env.PORT}`)
     }catch(err){
