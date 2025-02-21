@@ -1,9 +1,10 @@
 import { body } from "express-validator"
-import { usernameExists } from "../helpers/validar-db"
-import { validarCampos } from "./validar-fields"
-import { deleteFileOnError } from "./delete-file-on-error"
-import { handleErrors } from "./handleErrors"
-import { validateJWT } from "./validate-jwt"
+import { usernameExists } from "../helpers/validar-db.js"
+import { validarCampos } from "./validar-fields.js"
+import { deleteFileOnError } from "./delete-file-on-error.js"
+import { handleErrors } from "./handleErrors.js"
+import { validateJWT } from "./validate-jwt.js"
+import { hasRoles } from "./validar-roles.js"
 
 
 export const resgisterValidator = [
