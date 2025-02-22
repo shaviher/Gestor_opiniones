@@ -62,3 +62,40 @@ export const updatePassword = async (req, res) => {
         })
     }
 }
+
+
+export const updateProfilePicture = async (req, res) => {
+    try {
+        const { uid } = req.params
+        let newProfilePicture = req.file ? req.file.filename : null
+
+        if (!newProfilePicture) {
+            return res.status(400).json({
+                success: false,
+                message: "No new profile photo provided"
+            })
+        }
+
+        const user = await User.findById(uid)
+
+        if (user.profilePicture) {
+            const oldProfilePicturePath = join(__dirname, "../../public/uploads/profile-pictures", user.profilePicture)
+            await fs.unlink(oldProfilePicturePath)
+        }
+
+        user.profilePicture = newProfilePicture;
+        await user.save()
+
+        res.status(200).json({
+            success: true,
+            message: "Updated profile photo",
+            user
+        })
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: "Error updating profile photo",
+            error: err.message
+        })
+    }
+}
