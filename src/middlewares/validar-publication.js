@@ -24,3 +24,10 @@ export const updatePublicationValidator = [
     validarCampos,
     handleErrors
 ]
+
+export const deletePublicationValidator = [
+    validateJWT, 
+    param("uid").isMongoId().withMessage("Not a valid MongoDB ID"), 
+    validarCampos,
+    handleErrors 
+]

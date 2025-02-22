@@ -59,3 +59,32 @@ export const updatePublication = async (req, res) => {
         })
     }
 }
+
+
+export const deletePublication = async (req, res) => {
+    try{
+        const { user } = req
+        const { uid } = req.params
+
+        const publicationDelete = await publication.findOneAndDelete({_id: uid, user: user._id})
+
+        if(!publicationDelete) {
+            return res.status(404).json({
+                success: false,
+                message: "The post does not exist or you do not have permission to delete it"
+            })
+        }
+        
+        return res.status(200).json({
+            success: true,
+            message: "Post successfully deleted"
+        })
+
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error deleting post",
+            error: err.message
+        })
+    }
+}
