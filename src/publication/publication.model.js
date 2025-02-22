@@ -20,11 +20,11 @@ const publicationSchema = new Schema({
         type: Boolean,
         default: true
     },
-    Comments: [{
+    comments: [{
         type: Schema.ObjectId,
         ref: "Comments",
     }],
-    User: {
+    user: {
         type: Schema.ObjectId,
         ref: "User",
         required: true,
