@@ -1,7 +1,6 @@
 import { body } from "express-validator"
 import { handleErrors } from "./handleErrors.js";
 import { validateJWT } from "./validate-jwt.js";
-import { hasRoles } from "./validar-roles.js";
 import { validarCampos } from "./validar-campos.js";
 import { validarCategories } from "./validar-categories.js";
 
