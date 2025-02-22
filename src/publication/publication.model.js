@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { categories_allow } from "../../configs/categories.js";
 
 const publicationSchema = new Schema({
     title:{
@@ -8,7 +9,7 @@ const publicationSchema = new Schema({
     },
     category:{
         type: String,
-        enum: ["Technology", "Sports", "Policy","Food","Entertainment","Travel","Fashion","health","Education","Art"],
+        enum: categories_allow,
         required: true
     },
     text:{
