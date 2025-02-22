@@ -1,5 +1,5 @@
-import { body } from "express-validator"
-import { usernameExists } from "../helpers/validar-db.js"
+import { body, param } from "express-validator"
+import { userExists, usernameExists } from "../helpers/validar-db.js"
 import { validarCampos } from "./validar-fields.js"
 import { deleteFileOnError } from "./delete-file-on-error.js"
 import { handleErrors } from "./handleErrors.js"
@@ -29,4 +29,12 @@ export const updatedUserValidator = [
     validarCampos,
     handleErrors,
     validateJWT
+]
+
+export const updatePasswordValidator = [
+    param("uid").isMongoId().withMessage("Not a valid MongoDB ID"),
+    param("uid").custom(userExists),
+    body("newPassword").isLength({ min:8 }).withMessage("The password must contain at least 8 characters"),
+    validarCampos,
+    handleErrors
 ]

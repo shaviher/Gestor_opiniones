@@ -17,8 +17,9 @@ const middlewares = (app) => {
 }
 
 const routes = async (app) => {
-    app.use("/gestionOpiniones/v1/user", userRoutes)
     app.use("/gestionOpiniones/v1/auth", authRoutes)
+    app.use("/gestionOpiniones/v1/user", userRoutes)
+    
 
 }
 
@@ -37,9 +38,11 @@ export const initServer = () => {
         middlewares(app)
         conectarDB()
         routes(app)
-        app.listen(process.env.PORT)
-        console.log(`Server running on port ${process.env.PORT}`)
-    }catch(err){
-        console.log(`Server init failed: ${err}`)
+        const port = process.env.PORT || 3001;
+        app.listen(port, () => {
+            console.log(`Server running on port ${port} matutina`);
+        });
+    } catch (err) {
+        console.log(`Server init failed: ${err}`);
     }
-}
+};
