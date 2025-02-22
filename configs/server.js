@@ -9,7 +9,7 @@ import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js" 
 
 const middlewares = (app) => {
-    app.use(express.json())
+    app.use(express.json());
     app.use(cors())
     app.use(helmet())
     app.use(morgan("dev"))
