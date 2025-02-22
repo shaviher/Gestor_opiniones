@@ -7,6 +7,7 @@ import morgan from "morgan"
 import { dbConnection } from "./mongo.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import userRoutes from "../src/user/user.routes.js" 
+import publicationRoutes from "../src/publication/publication.routes.js"
 
 const middlewares = (app) => {
     app.use(express.json());
@@ -18,7 +19,7 @@ const middlewares = (app) => {
 const routes = async (app) => {
     app.use("/gestionOpiniones/v1/auth", authRoutes)
     app.use("/gestionOpiniones/v1/user", userRoutes)
-    
+    app.use("/gestionOpiniones/v1/publication", publicationRoutes)
 
 }
 
