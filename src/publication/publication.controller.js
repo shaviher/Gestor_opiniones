@@ -33,10 +33,10 @@ export const addPublication = async (req, res) => {
 export const updatePublication = async (req, res) => {
     try{
         const { user } = req
-        const { uid } = req.params
+        const { pid } = req.params
         const data = req.body
 
-        const publicationUpdated = await publication.findOneAndUpdate({ _id: uid, user: user._id}, data, { new: true})
+        const publicationUpdated = await publication.findOneAndUpdate({ _id: pid, user: user._id}, data, { new: true})
 
         if(!publicationUpdated) {
             return res.status(404).json({
@@ -64,9 +64,9 @@ export const updatePublication = async (req, res) => {
 export const deletePublication = async (req, res) => {
     try{
         const { user } = req
-        const { uid } = req.params
+        const { pid } = req.params
 
-        const publicationDelete = await publication.findOneAndDelete({_id: uid, user: user._id})
+        const publicationDelete = await publication.findOneAndDelete({_id: pid, user: user._id})
 
         if(!publicationDelete) {
             return res.status(404).json({
