@@ -7,7 +7,15 @@ import { handleErrors } from "./handleErrors.js";
 export const addCommentsValidator = [
     validateJWT,
     body("text").notEmpty().withMessage("Text is required"),
-    param("uid").isMongoId().withMessage("This is not a valid MongoDB ID"),
+    param("pid").isMongoId().withMessage("This is not a valid MongoDB ID"),
+    validarCampos,
+    handleErrors
+]
+
+export const updateCommentsValidator = [
+    validateJWT,
+    body("text").notEmpty().withMessage("Text is required"),
+    param("cid").isMongoId().withMessage("This is not a valid MongoDB ID"),
     validarCampos,
     handleErrors
 ]

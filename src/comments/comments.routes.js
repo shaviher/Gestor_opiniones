@@ -1,9 +1,13 @@
 import { Router } from "express";
-import { addCommentsValidator } from "../middlewares/validatos-comments,js";
-import { addComments } from "./comments.controller.js";
+import { addCommentsValidator, updateCommentsValidator } from "../middlewares/validatos-comments,js";
+import { addComments, updateComments } from "./comments.controller.js";
 
 const router = Router()
 
-router.post("/addComments/:uid", addCommentsValidator, addComments)
+router.post("/addComments/:pid", addCommentsValidator, addComments)
+
+router.patch("/updateComments/:cid", updateCommentsValidator, updateComments)
+
+
 
 export default router

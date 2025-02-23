@@ -6,8 +6,8 @@ const router = Router()
 
 router.post("/addPublication", addPublicationValidator, addPublication)
 
-router.put("/updatePublication/:uid", updatePublicationValidator, updatePublication)
+router.put("/updatePublication/:pid", updatePublicationValidator, updatePublication)
 
-router.delete("/deletePublication/:uid", deletePublicationValidator, deletePublication)
+router.delete("/deletePublication/:pid", deletePublicationValidator, deletePublication)
 
 export default router
