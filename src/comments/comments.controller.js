@@ -100,3 +100,32 @@ export const updateComments = async (req, res) => {
         })
     }
 }
+
+export const deletComments = async (req, res) => {
+    try{
+        const { user } = req
+        const { cid } = req.params
+
+        const commentDelete = await Comments.findOneAndDelete({_id: cid, user: user._id})
+
+        if(!commentDelete) {
+            return res.status(404).json({
+                success: false,
+                message: "The comment does not exist or you do not have permission to delete it"
+            })
+        }
+
+        return res.status(200).json({
+            success: true,
+            message: "The comment successfully deleted"
+        })
+
+
+    }catch(err){
+        return res.status(500).json({
+            success: false,
+            message: "Error deleting comment",
+            error: err.message
+        })
+    }
+}

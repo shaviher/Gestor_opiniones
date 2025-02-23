@@ -19,3 +19,10 @@ export const updateCommentsValidator = [
     validarCampos,
     handleErrors
 ]
+
+export const deleteCommentsValidator = [
+    validateJWT,
+    param("cid").isMongoId().withMessage("This is not a valid MongoDB ID"),
+    validarCampos,
+    handleErrors
+]
