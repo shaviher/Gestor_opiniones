@@ -1,4 +1,4 @@
-import { body } from "express-validator"
+import { body, param } from "express-validator"
 import { handleErrors } from "./handleErrors.js";
 import { validateJWT } from "./validate-jwt.js";
 import { validarCampos } from "./validar-campos.js";

@@ -1,6 +1,6 @@
 import { populate } from "dotenv"
 import Comments from "./comments.model.js"
-import Publications from "./publications.model.js";
+import Publications from "../publication/publication.model.js";
 
 
 export const addComments = async (req, res) => {
