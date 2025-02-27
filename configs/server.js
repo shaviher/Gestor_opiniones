@@ -10,6 +10,7 @@ import userRoutes from "../src/user/user.routes.js"
 import publicationRoutes from "../src/publication/publication.routes.js"
 import commentsRoutes from "../src/comments/comments.routes.js"
 import { swaggerDocs, swaggerUi } from "./swagger.js"
+import { adminCreate } from "./admin.js"
 
 const middlewares = (app) => {
     app.use(express.json());
@@ -40,6 +41,7 @@ export const initServer = () => {
     try{
         middlewares(app)
         conectarDB()
+        adminCreate()
         routes(app)
         const port = process.env.PORT || 3001;
         app.listen(port, () => {
